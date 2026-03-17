@@ -1,161 +1,230 @@
-import { Hero } from "@/components/Hero";
-import { Nav } from "@/components/Nav";
-import { Section } from "@/components/Chrome";
-import { WorkGrid } from "@/components/WorkGrid";
-import { Reveal } from "@/components/Reveal";
+import NavIsland from "@/components/NavIsland";
+import Section from "@/components/Section";
 import { site } from "@/lib/site";
 
 export default function Page() {
   return (
-    <div>
-      <Nav />
-      <Hero />
+    <div className="relative z-10">
+      <NavIsland />
 
-      <Section
-        id="work"
-        eyebrow="Selected"
-        title="Work"
-        className="relative"
-      >
-        <WorkGrid />
-      </Section>
-
-      <Section id="about" eyebrow="Who" title="About">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
-          <Reveal className="md:col-span-7">
-            <div className="glass rounded-3xl p-7">
-              <p className="text-white/75 leading-relaxed">
-                I’m {site.name}. I build systems that reduce manual work without
-                sacrificing clarity or control—especially in sales + operations
-                environments where the details matter.
-              </p>
-              <p className="mt-4 text-white/65 leading-relaxed">
-                This site is a living portfolio. The case studies will get more
-                detailed over time (screenshots, metrics, timelines, and
-                lessons learned).
+      <Section id="top" className="pt-32 sm:pt-40">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                {site.name}
+                <span className="block bg-gradient-to-r from-primary-emerald via-primary-blue to-primary-lime bg-clip-text text-transparent">
+                  Builder. Automator. Web Dev.
+                </span>
+              </h1>
+              <p className="text-xl text-white/80 leading-relaxed max-w-xl">
+                {site.description}
               </p>
             </div>
-          </Reveal>
-          <Reveal className="md:col-span-5" delay={0.08}>
-            <div className="glass rounded-3xl p-7">
-              <p className="text-xs font-medium tracking-[0.22em] text-white/55">
-                TOOLBELT
-              </p>
-              <ul className="mt-4 grid grid-cols-2 gap-2 text-sm text-white/75">
-                {[
-                  "Next.js",
-                  "React",
-                  "Tailwind",
-                  "Netlify",
-                  "GitHub",
-                  "Automation",
-                  "AI workflows",
-                  "SOP design",
-                ].map((t) => (
-                  <li
-                    key={t}
-                    className="rounded-xl bg-white/5 px-3 py-2 ring-1 ring-white/10"
-                  >
-                    {t}
-                  </li>
-                ))}
-              </ul>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href="#work" className="btn btn-primary">
+                View Work
+              </a>
+              <a href="#contact" className="btn">
+                Contact
+              </a>
             </div>
-          </Reveal>
+
+            <div className="grid grid-cols-3 gap-4 pt-8">
+              {[
+                { label: "Focus", value: "Automation + Web" },
+                { label: "Style", value: "Modern, clean" },
+                { label: "Delivery", value: "Fast + auditable" },
+              ].map((s) => (
+                <div key={s.label} className="glass rounded-2xl p-4">
+                  <div className="text-sm font-semibold text-primary-emerald">
+                    {s.label}
+                  </div>
+                  <div className="text-white/80 text-sm">{s.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="glass rounded-3xl p-8 card">
+              <h2 className="text-2xl font-bold mb-6">Quick Overview</h2>
+              <div className="space-y-4">
+                {["Work", "About", "Services", "Contact", "Resume"].map(
+                  (item) => (
+                    <div
+                      key={item}
+                      className="flex items-center justify-between py-3 border-b border-white/10"
+                    >
+                      <span className="text-white/90 font-medium">{item}</span>
+                      <span className="text-primary-emerald text-sm">→</span>
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
 
-      <Section id="services" eyebrow="What I do" title="Services">
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+      <Section id="work" className="">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4">Work</h2>
+          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+            Selected projects and systems. Case study details will be added over time.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             {
-              title: "Websites that convert",
-              body: "Fast, clean, and intentionally designed—built for real leads, not just aesthetics.",
+              title: "HelpingHandsSystems-KB",
+              desc: "Business knowledge base + SOP-first ops brain.",
+              tags: ["KB", "SOP", "Automation"],
             },
             {
-              title: "Automation-first operations",
-              body: "Turn messy workflows into SOPs + tools. Reduce busywork and keep accountability.",
+              title: "Web Intake + Deploy",
+              desc: "Lead intake forms + Netlify deployments.",
+              tags: ["Netlify", "Next.js", "React"],
             },
             {
-              title: "AI integration (practical)",
-              body: "Assistants that produce reviewable artifacts (not magic). Human-in-loop by default.",
+              title: "Sidekick / Rivryn Direction",
+              desc: "Local-first assistant architecture + modular tooling.",
+              tags: ["Agents", "Local-first", "Design"],
             },
-          ].map((s) => (
-            <Reveal key={s.title}>
-              <div className="glass rounded-3xl p-7">
-                <h3 className="text-lg font-semibold text-white">{s.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/65">
-                  {s.body}
-                </p>
+            {
+              title: "Case Study Placeholder",
+              desc: "We’ll add metrics, screenshots, and story later.",
+              tags: ["Coming Soon"],
+            },
+            {
+              title: "Case Study Placeholder",
+              desc: "We’ll add metrics, screenshots, and story later.",
+              tags: ["Coming Soon"],
+            },
+            {
+              title: "Case Study Placeholder",
+              desc: "We’ll add metrics, screenshots, and story later.",
+              tags: ["Coming Soon"],
+            },
+          ].map((p) => (
+            <div key={p.title} className="card p-8 group cursor-pointer">
+              <h3 className="text-2xl font-bold mb-4 group-hover:text-primary-emerald transition-colors">
+                {p.title}
+              </h3>
+              <p className="text-white/70 mb-6 leading-relaxed">{p.desc}</p>
+              <div className="flex flex-wrap gap-2">
+                {p.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 text-sm bg-primary-emerald/10 text-primary-emerald rounded-full border border-primary-emerald/20"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-            </Reveal>
+            </div>
           ))}
         </div>
       </Section>
 
-      <Section id="contact" eyebrow="Next step" title="Contact">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
-          <Reveal className="md:col-span-7">
-            <div className="glass rounded-3xl p-7">
-              <p className="text-white/70 leading-relaxed">
-                Want to collaborate or hire me? Send a quick note and tell me
-                what you’re building.
-              </p>
+      <Section id="about">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
+            <h2 className="text-4xl font-bold">About</h2>
+            <p className="text-xl text-white/80 leading-relaxed">
+              I’m {site.name}. I build systems that reduce manual work without sacrificing clarity.
+            </p>
+            <p className="text-white/70 leading-relaxed">
+              This portfolio is a living system—expect more detailed writeups, visuals, and results as we ship.
+            </p>
+          </div>
 
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <a
-                  className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-medium text-black hover:bg-white/90 ring-soft"
-                  href={`mailto:${site.email}`}
+          <div className="glass rounded-3xl p-8">
+            <h3 className="text-2xl font-bold mb-6">Skills</h3>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                "Next.js",
+                "React",
+                "Tailwind",
+                "Netlify",
+                "GitHub",
+                "Automation",
+                "AI workflows",
+                "SOP design",
+              ].map((skill) => (
+                <div
+                  key={skill}
+                  className="bg-white/5 rounded-xl p-4 border border-primary-emerald/10 hover:border-primary-emerald/30 transition-colors"
                 >
-                  Email me
-                </a>
-                <a
-                  className="inline-flex items-center justify-center rounded-full bg-white/5 px-6 py-3 text-sm font-medium text-white ring-1 ring-white/10 hover:bg-white/10"
-                  href={site.socials.github}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                </a>
-              </div>
-
-              <p className="mt-6 text-xs text-white/50">
-                Resume: <a className="underline" href={site.resumeUrl}>download</a>
-                {" "}(placeholder)
-              </p>
+                  <div className="text-white/90 font-medium">{skill}</div>
+                </div>
+              ))}
             </div>
-          </Reveal>
-
-          <Reveal className="md:col-span-5" delay={0.08}>
-            <div className="glass rounded-3xl p-7">
-              <p className="text-xs font-medium tracking-[0.22em] text-white/55">
-                DETAILS
-              </p>
-              <div className="mt-4 space-y-3 text-sm text-white/70">
-                <p>
-                  <span className="text-white/50">Location:</span> {site.location}
-                </p>
-                <p>
-                  <span className="text-white/50">Email:</span> {site.email}
-                </p>
-                {site.phone ? (
-                  <p>
-                    <span className="text-white/50">Phone:</span> {site.phone}
-                  </p>
-                ) : null}
-              </div>
-            </div>
-          </Reveal>
+          </div>
         </div>
       </Section>
 
-      <footer className="py-12">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="h-px w-full bg-white/10" />
-          <p className="mt-6 text-xs text-white/45">
-            © {new Date().getFullYear()} {site.name}. Built with Next.js.
+      <Section id="services">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4">Services</h2>
+          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+            What I can build and ship.
           </p>
         </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Websites that convert",
+              desc: "Fast, modern, and built to generate real leads.",
+            },
+            {
+              title: "Automation-first operations",
+              desc: "SOPs + tooling that removes busywork and keeps accountability.",
+            },
+            {
+              title: "Practical AI integration",
+              desc: "Assistants that produce reviewable work. Human-in-loop by default.",
+            },
+          ].map((s) => (
+            <div key={s.title} className="card p-8">
+              <h3 className="text-2xl font-bold mb-4">{s.title}</h3>
+              <p className="text-white/70 leading-relaxed">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section id="contact" className="pb-32">
+        <div className="glass rounded-3xl p-12 text-center max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold mb-6">Let’s work</h2>
+          <p className="text-xl text-white/70 mb-10 max-w-2xl mx-auto">
+            Want to collaborate? Send a quick note and tell me what you’re building.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href={`mailto:${site.email}`} className="btn btn-primary">
+              Email me
+            </a>
+            <a
+              href={site.socials.github}
+              target="_blank"
+              rel="noreferrer"
+              className="btn"
+            >
+              GitHub
+            </a>
+            <a href={site.resumeUrl} className="btn">
+              Resume
+            </a>
+          </div>
+        </div>
+      </Section>
+
+      <footer className="py-10 px-6 text-center text-white/50 relative z-10">
+        © {new Date().getFullYear()} {site.name}
       </footer>
     </div>
   );

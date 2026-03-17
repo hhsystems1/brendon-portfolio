@@ -1,31 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import FloatingParticles from "@/components/FloatingParticles";
+import InteractiveBackground from "@/components/InteractiveBackground";
 import { site } from "@/lib/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: site.title,
   description: site.description,
-  metadataBase: new URL("https://example.com"), // TODO: replace after domain is set
-  openGraph: {
-    title: site.title,
-    description: site.description,
-    type: "website",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -34,10 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className="dark">
+      <body className={`${inter.variable} antialiased`}>
+        <InteractiveBackground />
+        <FloatingParticles />
         {children}
       </body>
     </html>
