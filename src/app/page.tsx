@@ -1,5 +1,6 @@
 import NavIsland from "@/components/NavIsland";
 import Section from "@/components/Section";
+import HeroVideo from "@/components/HeroVideo";
 import { site } from "@/lib/site";
 
 export default function Page() {
@@ -7,64 +8,25 @@ export default function Page() {
     <div className="relative z-10">
       <NavIsland />
 
-      <Section id="top" className="pt-32 sm:pt-40">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                {site.name}
-                <span className="block bg-gradient-to-r from-primary-emerald via-primary-blue to-primary-lime bg-clip-text text-transparent">
-                  Builder. Automator. Web Dev.
-                </span>
-              </h1>
-              <p className="text-xl text-white/80 leading-relaxed max-w-xl">
-                {site.description}
-              </p>
-            </div>
+      {/* Bold hero (video reel placeholder) */}
+      <HeroVideo
+        videoId="dQw4w9WgXcQ"
+        title={`${site.name}`}
+        subtitle="Automation-first systems + premium web experiences. This portfolio is a living build log—case studies are coming next."
+        ctaText="View work"
+        ctaHref="#work"
+      />
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#work" className="btn btn-primary">
-                View Work
-              </a>
-              <a href="#contact" className="btn">
-                Contact
-              </a>
-            </div>
-
-            <div className="grid grid-cols-3 gap-4 pt-8">
-              {[
-                { label: "Focus", value: "Automation + Web" },
-                { label: "Style", value: "Modern, clean" },
-                { label: "Delivery", value: "Fast + auditable" },
-              ].map((s) => (
-                <div key={s.label} className="glass rounded-2xl p-4">
-                  <div className="text-sm font-semibold text-primary-emerald">
-                    {s.label}
-                  </div>
-                  <div className="text-white/80 text-sm">{s.value}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="glass rounded-3xl p-8 card">
-              <h2 className="text-2xl font-bold mb-6">Quick Overview</h2>
-              <div className="space-y-4">
-                {["Work", "About", "Services", "Contact", "Resume"].map(
-                  (item) => (
-                    <div
-                      key={item}
-                      className="flex items-center justify-between py-3 border-b border-white/10"
-                    >
-                      <span className="text-white/90 font-medium">{item}</span>
-                      <span className="text-primary-emerald text-sm">→</span>
-                    </div>
-                  )
-                )}
+      <Section id="top" className="pt-6">
+        <div className="grid md:grid-cols-3 gap-6">
+          {[{ label: "Focus", value: "Automation + Web" }, { label: "Speed", value: "Ship fast, iterate" }, { label: "Clarity", value: "SOP + audit trails" }].map((s) => (
+            <div key={s.label} className="glass rounded-2xl p-6 card">
+              <div className="text-sm font-semibold text-primary-emerald">
+                {s.label}
               </div>
+              <div className="text-white/80 text-base mt-1">{s.value}</div>
             </div>
-          </div>
+          ))}
         </div>
       </Section>
 
