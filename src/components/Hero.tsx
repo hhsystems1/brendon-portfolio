@@ -3,9 +3,25 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/Chrome";
 import { site } from "@/lib/site";
+import { useEffect, useState } from "react";
+
+function detectIOSSafari(): boolean {
+  if (typeof navigator === "undefined") return false;
+  const ua = navigator.userAgent;
+  const isIOS = /iPad|iPhone|iPod/.test(ua) ||
+    // iPadOS pretends to be Mac sometimes
+    (ua.includes("Mac") && "ontouchend" in document);
+  const isSafari = /Safari\//.test(ua) && !/Chrome\//.test(ua) && !/CriOS\//.test(ua) && !/FxiOS\//.test(ua);
+  return isIOS && isSafari;
+}
 
 export function Hero() {
   const reduced = useReducedMotion();
+  const [iosSafari, setIosSafari] = useState(false);
+
+  useEffect(() => {
+    setIosSafari(detectIOSSafari());
+  }, []);
 
   return (
     <section id="top" className="relative overflow-hidden pt-20 sm:pt-28">
@@ -34,9 +50,15 @@ export function Hero() {
             className="mt-5 max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-6xl"
           >
             I build
-            <span className="gradient-text inline-block bg-gradient-to-r from-cyan-200 via-white to-fuchsia-200">
-              {" "}automation-first systems{" "}
-            </span>
+            {iosSafari ? (
+              <span className="inline-block px-1 text-white drop-shadow-[0_0_18px_rgba(160,255,255,0.25)]">
+                {" "}automation-first systems{" "}
+              </span>
+            ) : (
+              <span className="gradient-text inline-block bg-gradient-to-r from-cyan-200 via-white to-fuchsia-200">
+                {" "}automation-first systems{" "}
+              </span>
+            )}
             and modern web experiences.
           </motion.h1>
 
