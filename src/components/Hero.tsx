@@ -34,7 +34,7 @@ export function Hero() {
             className="mt-5 max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-6xl"
           >
             I build
-            <span className="gradient-text bg-gradient-to-r from-cyan-200 via-white to-fuchsia-200">
+            <span className="gradient-text inline-block bg-gradient-to-r from-cyan-200 via-white to-fuchsia-200">
               {" "}automation-first systems{" "}
             </span>
             and modern web experiences.
