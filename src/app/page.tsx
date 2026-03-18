@@ -116,15 +116,18 @@ export default function Page() {
               </p>
               <h2 className="text-4xl font-bold">{site.name}</h2>
               <p className="text-xl text-white/80 leading-relaxed">
-                {site.roleLine} based in {site.location}.
+                {site.org.role} at {site.org.name}. {site.roleLine} based in {site.location}.
               </p>
               <p className="text-white/70 leading-relaxed">
-                I design and build high-converting websites and product UI—then
-                I connect them to automations so the business actually runs.
+                I build high-converting websites and product UI—then I connect them
+                to automations so the business actually runs.
               </p>
               <p className="text-white/70 leading-relaxed">
-                This portfolio is intentionally set up like a system: projects,
-                deliverables, and results will be added continuously.
+                Education: {site.education.school} · {site.education.credential}
+              </p>
+              <p className="text-white/70 leading-relaxed">
+                This portfolio is a living system: projects, deliverables, and results
+                will be added continuously.
               </p>
             </div>
 
@@ -209,7 +212,7 @@ export default function Page() {
                 </a>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <a href={site.socials.github} target="_blank" rel="noreferrer" className="btn">
-                    GitHub
+                    GitHub (@Brendonc-h)
                   </a>
                   <a href={site.resumeUrl} className="btn">
                     Resume
