@@ -77,6 +77,14 @@ export default function NavIsland() {
                 </a>
               ))}
               <a
+                href={site.socials.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="btn"
+              >
+                LinkedIn
+              </a>
+              <a
                 href={site.resumeUrl}
                 className="btn btn-primary px-5 py-3 text-sm"
               >

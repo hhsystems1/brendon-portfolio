@@ -9,7 +9,8 @@ export const site = {
   phone: "", // optional
   socials: {
     github: "https://github.com/Brendonc-h",
-    linkedin: "", // TODO
+    linkedin:
+      "https://www.linkedin.com/in/brendon-curry-hobbs-248029240",
     x: "", // TODO
   },
   resumeUrl: "/resume.pdf", // TODO: upload later

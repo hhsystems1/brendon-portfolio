@@ -214,6 +214,14 @@ export default function Page() {
                   <a href={site.socials.github} target="_blank" rel="noreferrer" className="btn">
                     GitHub (@Brendonc-h)
                   </a>
+                  <a
+                    href={site.socials.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn"
+                  >
+                    LinkedIn
+                  </a>
                   <a href={site.resumeUrl} className="btn">
                     Resume
                   </a>
