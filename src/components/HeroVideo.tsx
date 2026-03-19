@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
@@ -22,6 +23,27 @@ export default function HeroVideo({
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-800/30 to-slate-900/90" />
       <div className="absolute inset-0 bg-gradient-to-r from-primary-emerald/15 via-transparent to-primary-blue/15" />
+
+      {/* Mascot */}
+      <motion.div
+        initial={{ opacity: 0, y: 18, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+        className="pointer-events-none absolute right-6 top-24 z-10 hidden md:block"
+      >
+        <div className="relative">
+          <div className="absolute -inset-6 rounded-full bg-primary-emerald/15 blur-2xl" />
+          <div className="absolute -inset-8 rounded-full bg-primary-blue/10 blur-3xl" />
+          <Image
+            src="/turtle.jpg"
+            alt="Turtle mascot"
+            width={140}
+            height={140}
+            className="relative h-[140px] w-[140px] rounded-3xl object-cover ring-1 ring-primary-emerald/30 shadow-2xl"
+            priority
+          />
+        </div>
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-5xl mx-auto mb-8">

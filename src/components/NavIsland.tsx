@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { site } from "@/lib/site";
 
 export default function NavIsland() {
@@ -56,8 +57,15 @@ export default function NavIsland() {
               href="#top"
               className="flex items-center hover:opacity-90 hover:scale-105 transition-all duration-300 flex-shrink-0 group"
             >
-              <div className="h-9 w-9 rounded-full bg-primary-emerald/15 border border-primary-emerald/30 shadow-lg shadow-primary-emerald/10 flex items-center justify-center">
-                <span className="font-semibold">B</span>
+              <div className="h-9 w-9 rounded-full bg-primary-emerald/10 border border-primary-emerald/30 shadow-lg shadow-primary-emerald/10 flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/turtle.jpg"
+                  alt="Turtle mascot"
+                  width={36}
+                  height={36}
+                  className="h-9 w-9 object-cover"
+                  priority
+                />
               </div>
               <span className="ml-3 text-white/90 font-medium hidden sm:inline">
                 {site.name}
