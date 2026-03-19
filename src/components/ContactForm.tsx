@@ -2,7 +2,50 @@
 
 import { motion } from "framer-motion";
 
+import { useState } from "react";
+
+function encode(data: Record<string, string>) {
+  return Object.keys(data)
+    .map(
+      (key) =>
+        `${encodeURIComponent(key)}=${encodeURIComponent(data[key] ?? "")}`
+    )
+    .join("&");
+}
+
 export default function ContactForm() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle"
+  );
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+
+    const payload: Record<string, string> = {};
+    fd.forEach((v, k) => {
+      payload[k] = String(v);
+    });
+
+    try {
+      // Post to the static detection file (Next runtime migration requirement)
+      const res = await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode(payload),
+      });
+
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset();
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
     <form
       name="portfolio-contact"
@@ -10,8 +53,9 @@ export default function ContactForm() {
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="space-y-5"
+      onSubmit={onSubmit}
+      action="/__forms.html"
     >
-      {/* Netlify required hidden inputs */}
       <input type="hidden" name="form-name" value="portfolio-contact" />
       <p className="hidden">
         <label>
@@ -88,13 +132,24 @@ export default function ContactForm() {
         whileTap={{ scale: 0.99 }}
         className="btn btn-primary w-full"
         type="submit"
+        disabled={status === "sending"}
       >
-        Send
+        {status === "sending" ? "Sending…" : "Send"}
       </motion.button>
 
-      <p className="text-xs text-white/45">
-        You’ll get a reply within 24 hours.
-      </p>
+      {status === "sent" ? (
+        <p className="text-sm text-primary-emerald">Sent — I’ll reply soon.</p>
+      ) : status === "error" ? (
+        <p className="text-sm text-red-300">
+          Something went wrong. Email me directly at{" "}
+          <a className="underline" href="mailto:brendon1798@gmail.com">
+            brendon1798@gmail.com
+          </a>
+          .
+        </p>
+      ) : (
+        <p className="text-xs text-white/45">You’ll get a reply within 24 hours.</p>
+      )}
     </form>
   );
 }
