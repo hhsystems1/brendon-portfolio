@@ -12,7 +12,7 @@ export default function HeroVideo({
   ctaText,
   ctaHref,
 }: {
-  videoId: string;
+  videoId?: string;
   title: string;
   subtitle: string;
   ctaText: string;
@@ -24,7 +24,7 @@ export default function HeroVideo({
       <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-800/30 to-slate-900/90" />
       <div className="absolute inset-0 bg-gradient-to-r from-primary-emerald/15 via-transparent to-primary-blue/15" />
 
-      {/* Mascot */}
+      {/* Mascot (desktop) */}
       <motion.div
         initial={{ opacity: 0, y: 18, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -36,7 +36,6 @@ export default function HeroVideo({
           animate={{ y: [0, -10, 0], rotate: [0, 1.5, 0] }}
           transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
         >
-          {/* isolated glow */}
           <div className="absolute -inset-10 rounded-full bg-primary-emerald/18 blur-3xl" />
           <div className="absolute -inset-14 rounded-full bg-primary-blue/12 blur-3xl" />
           <div className="absolute -inset-16 rounded-full bg-primary-lime/8 blur-3xl" />
@@ -73,22 +72,48 @@ export default function HeroVideo({
         </motion.p>
       </div>
 
-      {/* Video */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        className="relative z-10 w-full max-w-4xl mx-auto mb-8"
-      >
-        <div className="video-container aspect-video rounded-2xl overflow-hidden">
-          <LiteYouTubeEmbed
-            id={videoId}
-            title="Portfolio reel"
-            poster="maxresdefault"
-            noCookie={true}
-          />
-        </div>
-      </motion.div>
+      {/* Media */}
+      {videoId ? (
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="relative z-10 w-full max-w-4xl mx-auto mb-8 hidden md:block"
+        >
+          <div className="video-container aspect-video rounded-2xl overflow-hidden">
+            <LiteYouTubeEmbed
+              id={videoId}
+              title="Portfolio reel"
+              poster="maxresdefault"
+              noCookie={true}
+            />
+          </div>
+        </motion.div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.35 }}
+          className="relative z-10 mx-auto mb-8 md:hidden"
+        >
+          <motion.div
+            className="relative"
+            animate={{ y: [0, -10, 0], rotate: [0, 1.5, 0] }}
+            transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <div className="absolute -inset-12 rounded-full bg-primary-emerald/18 blur-3xl" />
+            <div className="absolute -inset-16 rounded-full bg-primary-blue/12 blur-3xl" />
+            <Image
+              src="/turtle-emoji.webp"
+              alt="Turtle mascot"
+              width={220}
+              height={220}
+              className="relative h-[200px] w-[200px] object-contain"
+              priority
+            />
+          </motion.div>
+        </motion.div>
+      )}
 
       {/* CTA */}
       <motion.div

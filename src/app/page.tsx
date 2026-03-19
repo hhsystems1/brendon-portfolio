@@ -12,7 +12,6 @@ export default function Page() {
 
       {/* Bold hero (replace with your actual reel when ready) */}
       <HeroVideo
-        videoId="dQw4w9WgXcQ"
         title={`${site.roleLine}`}
         subtitle={
           "I design and build high-converting websites and automation-first workflows that feel premium and ship fast."
