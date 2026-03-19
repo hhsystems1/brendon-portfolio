@@ -32,7 +32,7 @@ export default function ContactForm() {
 
     try {
       // Post to the static detection file (Next runtime migration requirement)
-      const res = await fetch("/__forms.html", {
+      const res = await fetch("/__forms", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode(payload),
