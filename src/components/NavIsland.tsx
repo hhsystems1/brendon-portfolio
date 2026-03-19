@@ -57,16 +57,21 @@ export default function NavIsland() {
               href="#top"
               className="flex items-center hover:opacity-90 hover:scale-105 transition-all duration-300 flex-shrink-0 group"
             >
-              <div className="h-9 w-9 rounded-full bg-primary-emerald/10 border border-primary-emerald/30 shadow-lg shadow-primary-emerald/10 flex items-center justify-center overflow-hidden">
+              <motion.div
+                className="relative"
+                animate={{ y: [0, -3, 0], rotate: [0, 1, 0] }}
+                transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <div className="absolute -inset-3 rounded-full bg-primary-emerald/18 blur-xl" />
                 <Image
                   src="/turtle-emoji.webp"
                   alt="Turtle mascot"
-                  width={36}
-                  height={36}
-                  className="h-9 w-9 object-contain bg-slate-900/30"
+                  width={44}
+                  height={44}
+                  className="relative h-11 w-11 object-contain"
                   priority
                 />
-              </div>
+              </motion.div>
               <span className="ml-3 text-white/90 font-medium hidden sm:inline">
                 {site.name}
               </span>
