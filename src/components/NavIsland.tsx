@@ -59,11 +59,11 @@ export default function NavIsland() {
             >
               <div className="h-9 w-9 rounded-full bg-primary-emerald/10 border border-primary-emerald/30 shadow-lg shadow-primary-emerald/10 flex items-center justify-center overflow-hidden">
                 <Image
-                  src="/turtle.jpg"
+                  src="/turtle-emoji.webp"
                   alt="Turtle mascot"
                   width={36}
                   height={36}
-                  className="h-9 w-9 object-cover"
+                  className="h-9 w-9 object-contain bg-slate-900/30"
                   priority
                 />
               </div>

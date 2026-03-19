@@ -35,11 +35,11 @@ export default function HeroVideo({
           <div className="absolute -inset-6 rounded-full bg-primary-emerald/15 blur-2xl" />
           <div className="absolute -inset-8 rounded-full bg-primary-blue/10 blur-3xl" />
           <Image
-            src="/turtle.jpg"
+            src="/turtle-emoji.webp"
             alt="Turtle mascot"
-            width={140}
-            height={140}
-            className="relative h-[140px] w-[140px] rounded-3xl object-cover ring-1 ring-primary-emerald/30 shadow-2xl"
+            width={160}
+            height={160}
+            className="relative h-[160px] w-[160px] rounded-3xl object-contain bg-slate-900/40 ring-1 ring-primary-emerald/30 shadow-2xl"
             priority
           />
         </div>
