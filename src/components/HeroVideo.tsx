@@ -31,18 +31,25 @@ export default function HeroVideo({
         transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         className="pointer-events-none absolute right-6 top-24 z-10 hidden md:block"
       >
-        <div className="relative">
-          <div className="absolute -inset-6 rounded-full bg-primary-emerald/15 blur-2xl" />
-          <div className="absolute -inset-8 rounded-full bg-primary-blue/10 blur-3xl" />
+        <motion.div
+          className="relative"
+          animate={{ y: [0, -10, 0], rotate: [0, 1.5, 0] }}
+          transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
+        >
+          {/* isolated glow */}
+          <div className="absolute -inset-10 rounded-full bg-primary-emerald/18 blur-3xl" />
+          <div className="absolute -inset-14 rounded-full bg-primary-blue/12 blur-3xl" />
+          <div className="absolute -inset-16 rounded-full bg-primary-lime/8 blur-3xl" />
+
           <Image
             src="/turtle-emoji.webp"
             alt="Turtle mascot"
-            width={160}
-            height={160}
-            className="relative h-[160px] w-[160px] rounded-3xl object-contain bg-slate-900/40 ring-1 ring-primary-emerald/30 shadow-2xl"
+            width={260}
+            height={260}
+            className="relative h-[240px] w-[240px] rounded-[2.25rem] object-contain bg-slate-900/35 ring-1 ring-primary-emerald/35 shadow-[0_25px_80px_rgba(0,0,0,0.55)]"
             priority
           />
-        </div>
+        </motion.div>
       </motion.div>
 
       {/* Content */}
