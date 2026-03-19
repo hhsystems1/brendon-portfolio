@@ -112,7 +112,7 @@ export default function Page() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-primary-emerald font-semibold tracking-wide">
-                // About
+                {"// About"}
               </p>
               <h2 className="text-4xl font-bold">{site.name}</h2>
               <p className="text-xl text-white/80 leading-relaxed">
@@ -193,7 +193,7 @@ export default function Page() {
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div className="space-y-6">
               <p className="text-primary-emerald font-semibold tracking-wide">
-                // Get in touch
+                {"// Get in touch"}
               </p>
               <h2 className="text-4xl font-bold">Ready to work?</h2>
               <p className="text-xl text-white/70">
